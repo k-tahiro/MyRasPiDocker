@@ -30,15 +30,6 @@ RUN cd /usr/local/src && \
     sudo wget https://sourceforge.net/projects/netatalk/files/netatalk/3.1.10/netatalk-3.1.10.tar.bz2 && \
     sudo tar xvf netatalk-3.1.10.tar.bz2
 RUN cd /usr/local/src/netatalk-3.1.10 && \ 
-    sudo ./configure \
-        --with-init-style=debian-sysv \
-        --without-libevent \
-        --without-tdb \
-        --with-cracklib \
-        --enable-krbV-uam \
-        --with-pam-confdir=/etc/pam.d \
-        --with-dbus-daemon=/usr/bin/dbus-daemon \
-        --with-dbus-sysconf-dir=/etc/dbus-1/system.d \
-        --with-tracker-pkgconfig-version=1.0 && \ 
+    sudo ./configure --with-init-style=debian-sysv && \
     sudo make && \
     sudo make install
