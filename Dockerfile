@@ -44,5 +44,4 @@ RUN cd /usr/local/src/netatalk-3.1.10 && \
 RUN cd /usr/local/src/netatalk-3.1.10 && sudo make
 RUN cd /usr/local/src/netatalk-3.1.10 && sudo make install
 
-ENTRYPOINT /sbin/init
 CMD ["bash"]
