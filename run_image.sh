@@ -1,2 +1,3 @@
 #!/bin/sh
-docker run -ti k-tahiro/netatalk
+docker run --privileged -d --name netatalk k-tahiro/netatalk /sbin/init
+docker exec -it netatalk /bin/bash
