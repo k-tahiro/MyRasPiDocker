@@ -1,5 +1,5 @@
-MAINTAINER k-tahiro
 FROM resin/rpi-raspbian:jessie
+MAINTAINER k-tahiro
 
 RUN set -x && \
     sudo apt-get update && \
