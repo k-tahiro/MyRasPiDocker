@@ -41,7 +41,7 @@ RUN cd /usr/local/src/netatalk-3.1.10 && \
         --with-dbus-daemon=/usr/bin/dbus-daemon \
         --with-dbus-sysconf-dir=/etc/dbus-1/system.d \
         --with-tracker-pkgconfig-version=1.0
-RUN sudo make
-RUN sudo make install
+RUN cd /usr/local/src/netatalk-3.1.10 && sudo make
+RUN cd /usr/local/src/netatalk-3.1.10 && sudo make install
 
 CMD ["bash"]
