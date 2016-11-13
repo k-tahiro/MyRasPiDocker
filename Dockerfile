@@ -29,7 +29,6 @@ RUN sudo apt-get update && sudo apt-get install -y \
 RUN cd /usr/local/src && \
     sudo wget https://sourceforge.net/projects/netatalk/files/netatalk/3.1.10/netatalk-3.1.10.tar.bz2 && \
     sudo tar xvf netatalk-3.1.10.tar.bz2
-RUN cd /usr/local/src/netatalk-3.1.10 && \ 
-    sudo ./configure --with-init-style=debian-sysv && \
-    sudo make && \
-    sudo make install
+RUN cd /usr/local/src/netatalk-3.1.10 && sudo ./configure --with-init-style=debian-sysv
+RUN cd /usr/local/src/netatalk-3.1.10 && sudo make
+RUN cd /usr/local/src/netatalk-3.1.10 && sudo make install
