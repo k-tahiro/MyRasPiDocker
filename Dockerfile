@@ -6,7 +6,7 @@ RUN sudo apt-get install -y wget automake libtool build-essential pkg-config che
 RUN cd /usr/local/src && \
     sudo wget https://sourceforge.net/projects/netatalk/files/netatalk/3.1.10/netatalk-3.1.10.tar.bz2 && \
     sudo tar xvf netatalk-3.1.10.tar.bz2
-RUN cd /usr/local/src/netatalk-3.1.10 && sudo ./configure --with-init-style=debian --with-zeroconf --with-cracklib --with-pam-confdir=/etc/pam.d --with-dbus-sysconf-dir=/etc/dbus-1/system.d 
+RUN cd /usr/local/src/netatalk-3.1.10 && sudo ./configure --with-init-style=debian-systemd --with-zeroconf --with-cracklib --with-pam-confdir=/etc/pam.d --with-dbus-sysconf-dir=/etc/dbus-1/system.d 
 RUN sudo checkinstall --fstrans=no
 
 CMD ["bash"]
