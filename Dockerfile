@@ -1,3 +1,4 @@
+MAINTAINER k-tahiro
 FROM resin/rpi-raspbian:jessie
 
 RUN set -x && \
