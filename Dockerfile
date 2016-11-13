@@ -31,7 +31,7 @@ RUN cd /usr/local/src && \
     sudo tar xvf netatalk-3.1.10.tar.bz2
 RUN cd /usr/local/src/netatalk-3.1.10 && \ 
     sudo ./configure \
-        --with-init-style=debian-systemd \
+        --with-init-style=debian-sysv \
         --without-libevent \
         --without-tdb \
         --with-cracklib \
