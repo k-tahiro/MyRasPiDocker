@@ -1,8 +1,7 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER k-tahiro
 
-RUN set -x && \
-    sudo apt-get update && sudo apt-get install -y \
+RUN sudo apt-get update && sudo apt-get install -y \
         vim \
         wget \
         build-essential \
@@ -28,11 +27,12 @@ RUN set -x && \
         tracker \
         libtracker-sparql-1.0-dev \
         libtracker-miner-1.0-dev && \
-    cd /usr/local/src && \
-    sudo wget https://sourceforge.net/projects/netatalk/files/netatalk/3.1.10/netatalk-3.1.10.tar.bz2 && \
-    sudo tar xvf netatalk-3.1.10.tar.bz2 && \
-    cd netatalk-3.1.10 && sudo ./configure --with-init-style=debian-sysv && \
-    sudo make && \
-    sudo make install
+WORKDIR /usr/local/src
+RUN sudo wget https://sourceforge.net/projects/netatalk/files/netatalk/3.1.10/netatalk-3.1.10.tar.bz2 && \
+    sudo tar xvf netatalk-3.1.10.tar.bz2
+WORKDIR netatalk-3.1.10
+RUN sudo ./configure --with-init-style=debian-sysv && \
+RUN sudo make && \
+RUN sudo make install
 
 CMD ["service", "netatalk", "start"]
