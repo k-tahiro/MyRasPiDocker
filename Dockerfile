@@ -26,13 +26,13 @@ RUN sudo apt-get update && sudo apt-get install -y \
         libio-socket-inet6-perl \
         tracker \
         libtracker-sparql-1.0-dev \
-        libtracker-miner-1.0-dev && \
+        libtracker-miner-1.0-dev
 WORKDIR /usr/local/src
 RUN sudo wget https://sourceforge.net/projects/netatalk/files/netatalk/3.1.10/netatalk-3.1.10.tar.bz2 && \
     sudo tar xvf netatalk-3.1.10.tar.bz2
 WORKDIR netatalk-3.1.10
-RUN sudo ./configure --with-init-style=debian-sysv && \
-RUN sudo make && \
+RUN sudo ./configure --with-init-style=debian-sysv
+RUN sudo make
 RUN sudo make install
 
 CMD ["service", "netatalk", "start"]
