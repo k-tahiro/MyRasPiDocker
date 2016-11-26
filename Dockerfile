@@ -40,9 +40,9 @@ WORKDIR ~/
 COPY afp.conf /usr/local/etc/
 
 RUN useradd netatalk && \
+    echo "netatalk:netatalk" | chpasswd && \
     mkdir /TimeMachine && \
-    chown -R netatalk:netatalk /TimeMachine && \
-    echo "netatalk:netatalk" | chpasswd
+    chown -R netatalk:netatalk /TimeMachine
 
 EXPOSE [548, 5353]
 CMD ["service", "netatalk", "start"]
