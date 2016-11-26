@@ -25,10 +25,11 @@ RUN sudo apt-get update && sudo apt-get install -y \
         tracker \
         libtracker-sparql-1.0-dev \
         libtracker-miner-1.0-dev
-ADD https://sourceforge.net/projects/netatalk/files/netatalk/3.1.10/netatalk-3.1.10.tar.bz2 /usr/local/src/
 
 WORKDIR /usr/local/src
-RUN sudo tar xvf netatalk-3.1.10.tar.bz2
+RUN sudo apt-get install -y wget && \
+    sudo wget https://sourceforge.net/projects/netatalk/files/netatalk/3.1.10/netatalk-3.1.10.tar.bz2 && \
+    sudo tar xvf netatalk-3.1.10.tar.bz2
 WORKDIR netatalk-3.1.10
 RUN sudo ./configure --with-init-style=debian-sysv
 RUN sudo make
