@@ -44,5 +44,5 @@ RUN useradd netatalk && \
     mkdir /TimeMachine && \
     chown -R netatalk:netatalk /TimeMachine
 
-EXPOSE [548, 5353]
+EXPOSE 548 5353
 CMD ["service", "netatalk", "start"]
