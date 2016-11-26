@@ -35,4 +35,13 @@ RUN sudo ./configure --with-init-style=debian-sysv
 RUN sudo make
 RUN sudo make install
 
+COPY afp.conf /usr/local/etc/
+WORKDIR ~/
+
+RUN useradd netatalk && \
+    mkdir /TimeMachine && \
+    chown -R netatalk:netatalk /TimeMachine && \
+    echo "netatalk:netatalk" | chpasswd
+
+EXPOSE [548, 5353]
 CMD ["service", "netatalk", "start"]
