@@ -1,7 +1,9 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER k-tahiro
 
-RUN sudo apt-get update && sudo apt-get install -y \
+RUN sudo apt-get update && \
+    sudo apt-get install -y \
+        wget \
         build-essential \
         libevent-dev \
         libssl-dev \
@@ -27,16 +29,15 @@ RUN sudo apt-get update && sudo apt-get install -y \
         libtracker-miner-1.0-dev
 
 WORKDIR /usr/local/src
-RUN sudo apt-get install -y wget && \
-    sudo wget https://sourceforge.net/projects/netatalk/files/netatalk/3.1.10/netatalk-3.1.10.tar.bz2 && \
-    sudo tar xvf netatalk-3.1.10.tar.bz2
-WORKDIR netatalk-3.1.10
-RUN sudo ./configure --with-init-style=debian-sysv
-RUN sudo make
-RUN sudo make install
+RUN sudo wget https://sourceforge.net/projects/netatalk/files/netatalk/3.1.10/netatalk-3.1.10.tar.bz2 && \
+    sudo tar xvf netatalk-3.1.10.tar.bz2 && \
+    cd netatalk-3.1.10 && \
+    sudo ./configure --with-init-style=debian-sysv && \
+    sudo make && \
+    sudo make install
 
-COPY afp.conf /usr/local/etc/
 WORKDIR ~/
+COPY afp.conf /usr/local/etc/
 
 RUN useradd netatalk && \
     mkdir /TimeMachine && \
