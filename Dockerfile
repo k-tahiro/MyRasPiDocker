@@ -36,7 +36,7 @@ RUN sudo wget https://sourceforge.net/projects/netatalk/files/netatalk/3.1.10/ne
     sudo make && \
     sudo make install
 
-WORKDIR ~/
+WORKDIR /root
 COPY afp.conf /usr/local/etc/
 
 RUN useradd netatalk && \
@@ -44,5 +44,5 @@ RUN useradd netatalk && \
     mkdir /TimeMachine && \
     chown -R netatalk:netatalk /TimeMachine
 
-EXPOSE 548 5353
+EXPOSE 548
 CMD ["service", "netatalk", "start"]
